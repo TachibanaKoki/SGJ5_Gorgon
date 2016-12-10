@@ -11,12 +11,17 @@ public class EnemyHit : MonoBehaviour
     public  bool isAlive;
     public delegate void OnDeath();
     public OnDeath OnDeath_H;
+    private Renderer[] Childs;
+    private float MaxHp;
 
     // Use this for initialization
     void Start()
     {
         m_GazeAware = GetComponent<GazeAware>();
         isAlive = true;
+
+        Childs = GetComponentsInChildren<Renderer>();
+        MaxHp = EnemyHp;
     }
 
     // Update is called once per frame
@@ -26,14 +31,15 @@ public class EnemyHit : MonoBehaviour
         {
             EnemyHp--;
         }
-
-        //此処から先はHPがなくなったとき
-        if (EnemyHp > 0) return;
+        for (int i=0;i< Childs.Length;i++)
+        {
+            Childs[i].GetComponent<Renderer>().material.color =  new Color(1, EnemyHp / MaxHp,EnemyHp / MaxHp, 1);
+        }
+            //此処から先はHPがなくなったとき
+            if (EnemyHp > 0) return;
         if (isAlive)
         {
             isAlive = false;
-
-            GetComponent<Renderer>().material.color = Color.red;
 
             if (OnDeath_H != null)
             {
