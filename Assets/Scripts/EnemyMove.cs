@@ -12,11 +12,17 @@ public class EnemyMove : MonoBehaviour {
     {
         m_Agent = GetComponent<NavMeshAgent>();
         m_Agent.SetDestination(Vector3.zero);
+        GetComponent<EnemyHit>().OnDeath_H += ()=> { m_Agent.Stop();Debug.Log("Stop"); };
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		
+
 	}
+
+    void Stop()
+    {
+        m_Agent.Stop();
+    }
 }

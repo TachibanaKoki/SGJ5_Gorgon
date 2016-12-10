@@ -22,6 +22,10 @@ public class EnemyShot : MonoBehaviour {
     {
         isShot = false;
         StartCoroutine("ShotCoroutine");
+        GetComponent<EnemyHit>().OnDeath_H += () => 
+        {
+            StopCoroutine("ShotCoroutine");
+        };
 	}
 	
 	// Update is called once per frame
