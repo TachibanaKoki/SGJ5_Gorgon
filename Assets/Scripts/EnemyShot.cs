@@ -8,11 +8,10 @@ public class EnemyShot : MonoBehaviour {
     GameObject Bullet;
 
     [SerializeField]
-    float ShotRange = 5.0f;
+    float ShotRange = 15.0f;
     [SerializeField]
     float ShotTime = 0.5f;
 
-    [SerializeField]
     GameObject Player;
 
     bool isShot;
@@ -22,6 +21,7 @@ public class EnemyShot : MonoBehaviour {
     {
         isShot = false;
         StartCoroutine("ShotCoroutine");
+        Player = Camera.main.gameObject;
         GetComponent<EnemyHit>().OnDeath_H += () => 
         {
             StopCoroutine("ShotCoroutine");
@@ -56,8 +56,12 @@ public class EnemyShot : MonoBehaviour {
 
     void Shot()
     {
-        GameObject go = GameObject.Instantiate(Bullet,transform.position+transform.forward,Quaternion.identity);
-        Vector3 vec = Player.transform.position-transform.position;
-        go.GetComponent<Rigidbody>().AddForce(vec*0.5f);
+        Vector3 ShotPos = transform.position + transform.forward*0.3f + Vector3.up;
+        GameObject go = GameObject.Instantiate(Bullet,ShotPos,Quaternion.identity);
+        Vector3 vec = Player.transform.position- ShotPos-Vector3.up;
+        Vector3 v = new Vector3(Random.Range(-1.0f,1.0f),Random.Range(-1.0f,1.0f),Random.Range(-1.0f,1.0f));
+        vec = vec + v;
+        vec.Normalize();
+        go.GetComponent<Rigidbody>().AddForce(vec*10.0f,ForceMode.Impulse);
     }
 }

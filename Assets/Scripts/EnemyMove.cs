@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour {
 
-    NavMeshAgent m_Agent;
+    public NavMeshAgent m_Agent;
 
 	// Use this for initialization
 	void Start ()
