@@ -63,7 +63,7 @@ public class EnemyShot : MonoBehaviour {
 
     void Shot()
     {
-        Vector3 ShotPos = transform.position + transform.forward*0.3f + Vector3.up;
+        Vector3 ShotPos = transform.position + transform.forward*0.3f + Vector3.up*2.0f;
         GameObject go = GameObject.Instantiate(Bullet,ShotPos,Quaternion.identity);
         Vector3 vec = Player.transform.position- ShotPos-Vector3.up;
         Vector3 v = new Vector3(Random.Range(-1.0f,1.0f),Random.Range(-1.0f,1.0f),Random.Range(-1.0f,1.0f));

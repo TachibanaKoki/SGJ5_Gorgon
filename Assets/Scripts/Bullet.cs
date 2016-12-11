@@ -7,19 +7,7 @@ public class Bullet : MonoBehaviour
      
 	void Start ()
     {
-        Destroy(gameObject,10.0f);
+        Destroy(gameObject,2.0f);
 	}
 	
-	void Update ()
-    {
-	    
-	}
-
-    void OnTriggerEnter(Collider col)
-    {
-        if(col.tag == "Player")
-        {
-            Destroy(gameObject);
-        }
-    }
 }
