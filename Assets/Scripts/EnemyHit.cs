@@ -22,8 +22,6 @@ public class EnemyHit : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _ebs = EnemyBSe.GetComponent<EnemyBreakSe_script>();
-
         m_GazeAware = GetComponent<GazeAware>();
         isAlive = true;
 
@@ -31,6 +29,10 @@ public class EnemyHit : MonoBehaviour
         MaxHp = EnemyHp;
         player = Camera.main.gameObject;
         Lren = GetComponent<LineRenderer>();
+        EnemyBSe = GameObject.FindGameObjectWithTag("EBB");
+        _ebs = EnemyBSe.GetComponent<EnemyBreakSe_script>();
+
+
     }
 
     // Update is called once per frame

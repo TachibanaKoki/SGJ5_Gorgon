@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour {
     static int EnemyDestroyCount;
     [SerializeField]
     Text text;
+    [SerializeField]
+    Text timer;
 
+    private float m_timer;
     private bool IsGameEnd;
 
 	// Use this for initialization
@@ -19,15 +22,21 @@ public class GameManager : MonoBehaviour {
         I = this;
         EnemyDestroyCount = 0;
         IsGameEnd = false;
+        m_timer=0;
 	}
 
     void Update()
     {
         text.text = (EnemySpawner.MaxSpawnEnemy - EnemyDestroyCount).ToString();
+        m_timer += Time.deltaTime;
+        timer.text = ((int)m_timer).ToString();
+
         if (IsGameEnd) return;
         if(EnemyDestroyCount>=EnemySpawner.MaxSpawnEnemy)
         {
             IsGameEnd = true;
+            PlayerPrefs.SetFloat("PlayTime",m_timer);
+            PlayerPrefs.Save();
             SceneManager.LoadSceneAsync("Result");
         }
     }
