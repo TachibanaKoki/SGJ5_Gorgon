@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class player_camera_script : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class player_camera_script : MonoBehaviour
         if (c.gameObject.tag == "bullet")
         {
             _life -= 1;
+            transform.DOShakePosition(0.2f,0.1f,30);
             Destroy(c.gameObject);
         }
     }

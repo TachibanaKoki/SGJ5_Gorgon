@@ -5,7 +5,8 @@ using Tobii.EyeTracking;
 
 public class EnemyHit : MonoBehaviour
 {
-
+    public GameObject EnemyBSe;
+    EnemyBreakSe_script _ebs;
     public float EnemyHp = 500;
     private GazeAware m_GazeAware;
     public  bool isAlive;
@@ -16,14 +17,20 @@ public class EnemyHit : MonoBehaviour
     [SerializeField]
     private GameObject ParticleEffect;
 
+    private GameObject player;
+    LineRenderer Lren;
     // Use this for initialization
     void Start()
     {
+        _ebs = EnemyBSe.GetComponent<EnemyBreakSe_script>();
+
         m_GazeAware = GetComponent<GazeAware>();
         isAlive = true;
 
         Childs = GetComponentsInChildren<Renderer>();
         MaxHp = EnemyHp;
+        player = Camera.main.gameObject;
+        Lren = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -32,7 +39,15 @@ public class EnemyHit : MonoBehaviour
         if (m_GazeAware.HasGazeFocus)
         {
             EnemyHp--;
+            Lren.enabled = true;
+            Lren.SetPosition(0, transform.position+Vector3.up*2.0f);
+            Lren.SetPosition(1,player.transform.position-Vector3.up*0.3f);
         }
+        else
+        {
+            Lren.enabled = false;
+        }
+
         for (int i=0;i< Childs.Length;i++)
         {
             Childs[i].GetComponent<Renderer>().material.SetFloat("_Fill",1-(EnemyHp / MaxHp));
@@ -50,6 +65,7 @@ public class EnemyHit : MonoBehaviour
             }
 
             GameObject.Instantiate(ParticleEffect,transform.position,Quaternion.identity);
+            _ebs.EbreakSe();
             Destroy(gameObject);
         }
 
