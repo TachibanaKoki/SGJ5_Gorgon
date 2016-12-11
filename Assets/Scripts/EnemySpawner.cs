@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour {
 
     public static int SpawnEnemyCount;
     public const int MaxSpawnEnemy=15;
+    const int stageMaxEnemys = 4;
 
     [SerializeField]
     float TimeSpan= 5.0f;
@@ -42,6 +43,7 @@ public class EnemySpawner : MonoBehaviour {
 
     void SpawnEnemy()
     {
+        if ((SpawnEnemyCount - GameManager.EnemyDestroyCount)>=stageMaxEnemys) return;
         SpawnEnemyCount++;
         if (SpawnEnemyCount > MaxSpawnEnemy) return;
         GameObject go = GameObject.Instantiate(Enemy, transform.position + transform.forward+ new Vector3(Random.Range(-SpawnRange.x, SpawnRange.x),0.0f,Random.Range(-SpawnRange.y,SpawnRange.y)), transform.rotation);
