@@ -25,7 +25,7 @@ public class player_camera_script : MonoBehaviour
     void Update()
     {
         PlayerMove();
-      //  Debug.Log(_life);
+        //  Debug.Log(_life);
     }
     void PlayerMove()
     {
@@ -62,5 +62,22 @@ public class player_camera_script : MonoBehaviour
         }
         //-----------------------------------------
     }
+    void RightRot()
+    {
+        _rotationCnt += _rotationSpeed;
+    }
+    void LeftRot()
+    {
+        _rotationCnt -= _rotationSpeed;
+    }
+    void OnCollisionEnter(Collision c)
+    {
+        if (c.gameObject.tag == "bullet")
+        {
+            _life -= 1;
+            Destroy(c.gameObject);
+        }
+    }
 }
+
     

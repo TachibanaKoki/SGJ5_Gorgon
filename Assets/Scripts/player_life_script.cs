@@ -20,4 +20,5 @@ public class player_life_script : MonoBehaviour {
        bar_image.fillAmount = (play._life / play._lifeMax);
       //Debug.Log(_pLife);
     }
+
 }
