@@ -22,6 +22,7 @@ public class player_camera_script : MonoBehaviour
         if (_life<=0)
         {
             //Application.LoadLevel("Game_over");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
         }
 
     }

@@ -13,6 +13,8 @@ public class EnemyHit : MonoBehaviour
     public OnDeath OnDeath_H;
     private Renderer[] Childs;
     private float MaxHp;
+    [SerializeField]
+    private GameObject ParticleEffect;
 
     // Use this for initialization
     void Start()
@@ -46,6 +48,9 @@ public class EnemyHit : MonoBehaviour
                 Debug.Log("Death");
                 OnDeath_H();
             }
+
+            GameObject.Instantiate(ParticleEffect,transform.position,Quaternion.identity);
+            Destroy(gameObject);
         }
 
     }
