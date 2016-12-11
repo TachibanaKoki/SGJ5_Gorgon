@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Retry : MonoBehaviour {
 
     public float FlameCount = 10;
-    private const string MAIN_SCENE_NAME = "Tachibana";
+    private const string NEXT_SCENE_NAME = "Main";
     private GazeAware m_GazeAware;
     
     // Use this for initialization
@@ -23,7 +23,7 @@ public class Retry : MonoBehaviour {
             FlameCount--;
             if (FlameCount <= 0)
             {
-                SceneManager.LoadScene(MAIN_SCENE_NAME);
+                SceneManager.LoadScene(NEXT_SCENE_NAME);
             }
         }
 
