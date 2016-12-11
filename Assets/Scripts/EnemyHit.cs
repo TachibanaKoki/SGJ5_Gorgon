@@ -16,6 +16,8 @@ public class EnemyHit : MonoBehaviour
     [SerializeField]
     private GameObject ParticleEffect;
 
+    private GameObject player;
+    LineRenderer Lren;
     // Use this for initialization
     void Start()
     {
@@ -24,6 +26,8 @@ public class EnemyHit : MonoBehaviour
 
         Childs = GetComponentsInChildren<Renderer>();
         MaxHp = EnemyHp;
+        player = Camera.main.gameObject;
+        Lren = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -32,7 +36,15 @@ public class EnemyHit : MonoBehaviour
         if (m_GazeAware.HasGazeFocus)
         {
             EnemyHp--;
+            Lren.enabled = true;
+            Lren.SetPosition(0, transform.position+Vector3.up*2.0f);
+            Lren.SetPosition(1,player.transform.position-Vector3.up*0.3f);
         }
+        else
+        {
+            Lren.enabled = false;
+        }
+
         for (int i=0;i< Childs.Length;i++)
         {
             Childs[i].GetComponent<Renderer>().material.SetFloat("_Fill",1-(EnemyHp / MaxHp));
