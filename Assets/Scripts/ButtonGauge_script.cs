@@ -19,7 +19,7 @@ public class ButtonGauge_script : MonoBehaviour {
         gauge_image.fillAmount = (_gauge / _gaugeMax);
         if (_gauge<=0)
         {
-           // Application.LoadLevel("Game_scene");
+           Application.LoadLevel("Main");
         }
     }
     public void GaugeCnt()
