@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Retry : MonoBehaviour {
 
-    public float FlameCount = 10;
+    public float FlameCount = 180;
     private const string NEXT_SCENE_NAME = "Main";
     private GazeAware m_GazeAware;
     
@@ -25,6 +25,26 @@ public class Retry : MonoBehaviour {
             {
                 SceneManager.LoadScene(NEXT_SCENE_NAME);
             }
+
+            // ボタンの色を変える
+            float changeRed = 0.0f;
+            float changeGreen = 0.0f;
+            float cahngeBlue = 1.0f;
+            float cahngeAlpha = 1.0f;
+            this.GetComponent<SpriteRenderer>().color = new Color(changeRed, changeGreen, cahngeBlue, cahngeAlpha);
+
+        }
+        else
+        {
+            FlameCount = 180;
+
+            // ボタンの色を戻す
+            float changeRed = 1.0f;
+            float changeGreen = 1.0f;
+            float cahngeBlue = 1.0f;
+            float cahngeAlpha = 1.0f;
+            this.GetComponent<SpriteRenderer>().color = new Color(changeRed, changeGreen, cahngeBlue, cahngeAlpha);
+
         }
 
     }

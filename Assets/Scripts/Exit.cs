@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour {
 
-    public float FlameCount = 10;
+    public float FlameCount = 240;
     private GazeAware m_GazeAware;
 
     // Use this for initialization
@@ -24,6 +24,26 @@ public class Exit : MonoBehaviour {
             {
                 Application.Quit();
             }
+
+            // ボタンの色を変える
+            float changeRed = 0.0f;
+            float changeGreen = 0.0f;
+            float cahngeBlue = 1.0f;
+            float cahngeAlpha = 1.0f;
+            this.GetComponent<SpriteRenderer>().color = new Color(changeRed, changeGreen, cahngeBlue, cahngeAlpha);
+
+        }
+        else
+        {
+            FlameCount = 240;
+
+            // ボタンの色を戻す
+            float changeRed = 1.0f;
+            float changeGreen = 1.0f;
+            float cahngeBlue = 1.0f;
+            float cahngeAlpha = 1.0f;
+            this.GetComponent<SpriteRenderer>().color = new Color(changeRed, changeGreen, cahngeBlue, cahngeAlpha);
+
         }
 
     }
