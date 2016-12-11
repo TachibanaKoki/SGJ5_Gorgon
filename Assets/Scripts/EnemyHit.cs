@@ -35,7 +35,7 @@ public class EnemyHit : MonoBehaviour
         }
         for (int i=0;i< Childs.Length;i++)
         {
-            Childs[i].GetComponent<Renderer>().material.color =  new Color(1, EnemyHp / MaxHp,EnemyHp / MaxHp, 1);
+            Childs[i].GetComponent<Renderer>().material.SetFloat("_Fill",1-(EnemyHp / MaxHp));
         }
             //此処から先はHPがなくなったとき
             if (EnemyHp > 0) return;

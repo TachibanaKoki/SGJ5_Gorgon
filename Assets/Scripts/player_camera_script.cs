@@ -46,11 +46,11 @@ public class player_camera_script : MonoBehaviour
             _rotationCnt += _rotationSpeed;
         }
     }
-    void RightRot()
+    public void RightRot()
     {
         _rotationCnt += _rotationSpeed;
     }
-    void LeftRot()
+    public void LeftRot()
     {
         _rotationCnt -= _rotationSpeed;
     }
