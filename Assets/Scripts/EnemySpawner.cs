@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
+    public static int SpawnEnemyCount;
+    public const int MaxSpawnEnemy=15;
+
     [SerializeField]
     float TimeSpan= 5.0f;
 
@@ -16,10 +19,16 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField]
     Vector2 SpawnRange = new Vector2(1, 1);
 
+
+    void Awake()
+    {
+        SpawnEnemyCount = 0;
+    }
     // Use this for initialization
     void Start ()
     {
         StartCoroutine("EnemyCoroutine");
+
 	}
 
     IEnumerator EnemyCoroutine()
@@ -33,6 +42,9 @@ public class EnemySpawner : MonoBehaviour {
 
     void SpawnEnemy()
     {
+        SpawnEnemyCount++;
+        if (SpawnEnemyCount > MaxSpawnEnemy) return;
         GameObject go = GameObject.Instantiate(Enemy, transform.position + transform.forward+ new Vector3(Random.Range(-SpawnRange.x, SpawnRange.x),0.0f,Random.Range(-SpawnRange.y,SpawnRange.y)), transform.rotation);
+
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonGauge_script : MonoBehaviour {
     public Image gauge_image;
@@ -17,9 +18,9 @@ public class ButtonGauge_script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         gauge_image.fillAmount = (_gauge / _gaugeMax);
-        if (_gauge<=0)
+        if (_gauge>= _gaugeMax)
         {
-           Application.LoadLevel("Main");
+            SceneManager.LoadScene("Main");
         }
     }
     public void GaugeCnt()

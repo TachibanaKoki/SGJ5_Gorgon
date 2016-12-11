@@ -6,7 +6,7 @@ using Tobii.EyeTracking;
 public class EnemyHit : MonoBehaviour
 {
 
-    public float EnemyHp = 10;
+    public float EnemyHp = 500;
     private GazeAware m_GazeAware;
     public  bool isAlive;
     public delegate void OnDeath();

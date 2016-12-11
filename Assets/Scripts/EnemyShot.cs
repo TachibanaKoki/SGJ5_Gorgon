@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyShot : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class EnemyShot : MonoBehaviour {
     float ShotTime = 0.5f;
 
     GameObject Player;
+    EnemyMove e_move;
 
     bool isShot;
 
@@ -26,20 +28,26 @@ public class EnemyShot : MonoBehaviour {
         {
             StopCoroutine("ShotCoroutine");
         };
+        e_move = GetComponent<EnemyMove>();
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
-		if(Vector3.Distance(transform.position,Player.transform.position)<ShotRange)
+        isShot = false;
+        if (!(Vector3.Distance(transform.position, Player.transform.position) < ShotRange)) return;
+        Vector3 vec = Player.transform.position - transform.position;
+        float d =Vector3.Dot(vec,transform.forward);
+        if (d < 0) return;
+
+        NavMeshHit hit;
+        if (!e_move.m_Agent.Raycast(Player.transform.position, out hit))
         {
             isShot = true;
         }
-        else
-        {
-            isShot = false;
-        }
-	}
+    }
+
+	
 
     IEnumerator ShotCoroutine()
     {
