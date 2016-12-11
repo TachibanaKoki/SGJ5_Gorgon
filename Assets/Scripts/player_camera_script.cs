@@ -6,26 +6,24 @@ public class player_camera_script : MonoBehaviour
 {
     private float _rotationSpeed, _rotationCnt, _playerSpeed;
     public float _life, _lifeMax;
-    //------------------------
-    int tf;
-    //------------------------
     void Start()
     {
         _rotationCnt = 0;
         _rotationSpeed = 2;
         _playerSpeed = 0.1f;
-        //----------------------
         _life = 10;
         _lifeMax = _life;
-        tf = 1;
-        //----------------------
     }
 
 
     void Update()
     {
         PlayerMove();
-        //  Debug.Log(_life);
+        if (_life<=0)
+        {
+            //Application.LoadLevel("Game_over");
+        }
+
     }
     void PlayerMove()
     {
@@ -46,21 +44,6 @@ public class player_camera_script : MonoBehaviour
         {
             _rotationCnt += _rotationSpeed;
         }
-        //---------------------------------------
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (tf == 1)
-            {
-                tf = 0;
-                _life -= 1;
-            }
-        }
-        else
-        {
-            tf = 1;
-
-        }
-        //-----------------------------------------
     }
     void RightRot()
     {

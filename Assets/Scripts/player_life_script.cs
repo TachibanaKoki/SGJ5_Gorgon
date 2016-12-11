@@ -18,7 +18,6 @@ public class player_life_script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
        bar_image.fillAmount = (play._life / play._lifeMax);
-      //Debug.Log(_pLife);
     }
 
 }

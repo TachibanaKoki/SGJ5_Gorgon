@@ -7,6 +7,7 @@ using Tobii.EyeX;
 public class Button_script : MonoBehaviour {
     public GameObject gauge;
      GazeAware eyes;
+   
     private EyePositionDataProvider eyePosition_data;
     ButtonGauge_script buttonG;
 
@@ -19,13 +20,10 @@ public class Button_script : MonoBehaviour {
         if (eyes.HasGazeFocus)
         {
             buttonG.GaugeCnt();
-            Debug.Log("aaa");
         }
         else
         {
             buttonG.GaugeMax();
         }
-       
-      
     }
 }

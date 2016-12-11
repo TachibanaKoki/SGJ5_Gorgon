@@ -8,27 +8,26 @@ public class ButtonGauge_script : MonoBehaviour {
   　private float _gauge,_gaugeMax;
     // Use this for initialization
     void Start () {
-        _gauge = 60;
-        _gaugeMax = _gauge;
+        _gauge = 0;
+        _gaugeMax = 40;
         gauge_image.fillAmount = 1;
-        gauge_image.fillAmount = (_gauge / _gaugeMax);
+       
     }
 	
 	// Update is called once per frame
 	void Update () {
-       // Debug.Log(_gauge);
-        
+        gauge_image.fillAmount = (_gauge / _gaugeMax);
         if (_gauge<=0)
         {
-            //---------------------------------------------
+           // Application.LoadLevel("Game_scene");
         }
     }
     public void GaugeCnt()
     {
-        _gauge -= 1;
+        _gauge += 1;
     }
     public void GaugeMax()
     {
-        _gauge = _gaugeMax;
+        _gauge = 0;
     }
 }
