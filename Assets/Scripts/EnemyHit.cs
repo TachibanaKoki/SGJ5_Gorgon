@@ -5,7 +5,8 @@ using Tobii.EyeTracking;
 
 public class EnemyHit : MonoBehaviour
 {
-
+    public GameObject EnemyBSe;
+    EnemyBreakSe_script _ebs;
     public float EnemyHp = 500;
     private GazeAware m_GazeAware;
     public  bool isAlive;
@@ -21,6 +22,8 @@ public class EnemyHit : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        _ebs = EnemyBSe.GetComponent<EnemyBreakSe_script>();
+
         m_GazeAware = GetComponent<GazeAware>();
         isAlive = true;
 
@@ -62,6 +65,7 @@ public class EnemyHit : MonoBehaviour
             }
 
             GameObject.Instantiate(ParticleEffect,transform.position,Quaternion.identity);
+            _ebs.EbreakSe();
             Destroy(gameObject);
         }
 
