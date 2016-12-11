@@ -8,8 +8,7 @@ public class EnemyShot : MonoBehaviour {
     [SerializeField]
     GameObject Bullet;
 
-    [SerializeField]
-    float ShotRange = 15.0f;
+    float ShotRange = 20.0f;
     [SerializeField]
     float ShotTime = 0.5f;
 

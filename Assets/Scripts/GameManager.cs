@@ -7,7 +7,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public static GameManager I;
-    static int EnemyDestroyCount;
+    public static int EnemyDestroyCount;
+
+    public int DeathCount
+    {
+        get
+        {
+            return EnemyDestroyCount;
+        }
+    }
     [SerializeField]
     Text text;
     [SerializeField]

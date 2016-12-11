@@ -18,6 +18,7 @@ public class Button_script : MonoBehaviour {
     }
 	void Update () {
         if (eyes.HasGazeFocus)
+       // if (Input.GetKey(KeyCode.UpArrow))
         {
             buttonG.GaugeCnt();
         }
